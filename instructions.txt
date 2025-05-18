@@ -12,8 +12,9 @@ docker login
 Step 3: Pull and run the Docker image
 
 Run the following commands to run my docker files:
-docker pull ramyamittapally/receipt-processor-app:latest
-docker run -p 8080:8080 ramyamittapally/receipt-processor-app:latest
+docker pull ramyamittapally/receipt-processor:v1.0
+docker run -p 8080:8080 ramyamittapally/receipt-processor:v1.0
+
 localhost and host port both are 8080 for me.
 
 
