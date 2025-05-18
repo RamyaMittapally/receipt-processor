@@ -1,0 +1,50 @@
+Step 1: Install Docker and a REST API client
+
+Install Docker 
+
+Use a REST API client like Postman, or use curl in the terminal
+
+Step 2: Log in to Docker Hub
+
+Open terminal and run:
+docker login
+
+Step 3: Pull and run the Docker image
+
+Run the following commands to run my docker files:
+docker pull ramyamittapally/receipt-processor-app:latest
+docker run -p 8080:8080 ramyamittapally/receipt-processor-app:latest
+localhost and host port both are 8080 for me.
+
+
+If port 8080 is already in use on your system, change the host port:
+docker run -p 9090:8080 ramyamittapally/receipt-processor-app:latest
+
+Use http://localhost:9090 instead of 8080 in the next steps if you changed the port
+
+Step 4: Send a POST request to process a receipt
+
+URL: http://localhost:8080/receipts/process
+
+Method: POST
+
+Header: Content-Type = application/json
+
+Body:
+{
+"retailer": "Target",
+"purchaseDate": "2022-01-01",
+"purchaseTime": "13:01",
+"items": [
+{"shortDescription": "Mountain Dew 12PK", "price": "6.49"},
+{"shortDescription": "Emils Cheese Pizza", "price": "12.25"}
+],
+"total": "18.74"
+}
+
+You will receive a response with an ID like "3f5a8b4d"
+
+Step 5: Use the ID to get reward points
+
+URL format: http://localhost:8080/receipts/{id}/points
+
